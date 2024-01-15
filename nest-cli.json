@@ -45,6 +45,24 @@
       "compilerOptions": {
         "tsConfigPath": "apps/redis-test/tsconfig.app.json"
       }
+    },
+    "nest-config-test": {
+      "type": "application",
+      "root": "apps/nest-config-test",
+      "entryFile": "main",
+      "sourceRoot": "apps/nest-config-test/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/nest-config-test/tsconfig.app.json"
+      }
+    },
+    "myconfig": {
+      "type": "library",
+      "root": "libs/myconfig",
+      "entryFile": "index",
+      "sourceRoot": "libs/myconfig/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/myconfig/tsconfig.lib.json"
+      }
     }
   }
 }
