@@ -5,7 +5,13 @@
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": true,
-    "tsConfigPath": "apps/monorepo-test/tsconfig.app.json"
+    "tsConfigPath": "apps/monorepo-test/tsconfig.app.json",
+    "assets": [
+      {
+        "include": "../config/*.yaml",
+        "outDir": "./dist/config"
+      }
+    ]
   },
   "monorepo": true,
   "root": "apps/monorepo-test",
