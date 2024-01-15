@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import baseConfig from 'config/base-config';
-import yamlConfig from 'config/yaml-config';
+import baseConfig from '../factory/base-config';
+import yamlConfig from '../factory/yaml-config';
 import { MyconfigService } from './myconfig.service';
 @Module({
   imports: [
