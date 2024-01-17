@@ -26,4 +26,7 @@ export class NestConfigTestController {
       config: this.configService.get('aaa.bbb'),
     };
   }
+
+  @Get('redis/:key')
+  getRedisByKey() {}
 }

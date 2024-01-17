@@ -69,6 +69,24 @@
       "compilerOptions": {
         "tsConfigPath": "libs/myconfig/tsconfig.lib.json"
       }
+    },
+    "cache-manager-test": {
+      "type": "application",
+      "root": "apps/cache-manager-test",
+      "entryFile": "main",
+      "sourceRoot": "apps/cache-manager-test/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/cache-manager-test/tsconfig.app.json"
+      }
+    },
+    "jwt-and-session": {
+      "type": "application",
+      "root": "apps/jwt-and-session",
+      "entryFile": "main",
+      "sourceRoot": "apps/jwt-and-session/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/jwt-and-session/tsconfig.app.json"
+      }
     }
   }
 }

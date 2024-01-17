@@ -1,6 +1,8 @@
-import { Module } from '@nestjs/common';
+import { Module, Provider } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { createClient } from '@redis/client';
+import { REDIS_CLIENT } from 'constant/provider-token';
 import baseConfig from '../factory/base-config';
 import yamlConfig from '../factory/yaml-config';
 import { MyconfigService } from './myconfig.service';
@@ -16,6 +18,24 @@ const ConfigModuleForRoot = ConfigModule.forRoot({
   // 2. 异步逻辑加载
   load: [baseConfig, yamlConfig],
 });
+
+const redisProvider: Provider = {
+  provide: REDIS_CLIENT,
+  async useFactory(configService: ConfigService) {
+    const client = createClient({
+      socket: {
+        host: configService.get('redis.host'),
+        port: configService.get('redis.port'),
+        passphrase: configService.get('redis.passphrase'),
+      },
+    });
+
+    await client.connect();
+    return client;
+  },
+  // 与angular中的deps相似
+  inject: [ConfigService],
+};
 @Module({
   imports: [
     ConfigModuleForRoot,
@@ -44,7 +64,7 @@ const ConfigModuleForRoot = ConfigModule.forRoot({
       },
     }),
   ],
-  providers: [MyconfigService],
-  exports: [MyconfigService],
+  providers: [MyconfigService, redisProvider],
+  exports: [MyconfigService, redisProvider],
 })
 export class MyconfigModule {}
